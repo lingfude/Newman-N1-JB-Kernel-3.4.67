@@ -1,16 +1,10 @@
-==================================================================
-= EXPERIMENTAL: 3.4.67 kernel source code for Newman N1 (MT6577) =
-==================================================================
+====================================================
+= 3.4.67 kernel source code for Newman N1 (MT6577) =
+====================================================
 
-*********************************************************************************
-* NOTE: This kernel is for JB 4.1.1 and 4.2.2 but for now the phone won't boot. *
-* It gets stuck after boot logo with following errors in logcat:                *
-*                                                                               *
-* E/IMGSRV  (  104): :0: OpenServices: PVRSRVBridgeCall failed.                 *
-* E/IMGSRV  (  104): :0: PVRSRVConnect: Unable to open connection.              *
-* E/IMGSRV  (  104): :0: PVRSRVBridgeCall: Failed to access device.             *
-*                        Function ID:3223086860 (Bad address).                  *
-*********************************************************************************
+***********************************************
+* NOTE: This kernel is for JB 4.1.x and 4.2.x *
+***********************************************
 
 In order to get kernel compilation working, make sure you follow one of these steps:
 
@@ -43,6 +37,11 @@ In order to get kernel compilation working, make sure you follow one of these st
 - Create new boot.img:
   -- Get stock boot.img for device and unpack it.
   -- Repack the stock ramdisk (from stock boot.img) with the new generated kernel file.
+
+- Replace the following modules by these compiled with kernel:
+  -- m4u.ko
+  -- mtklfb.ko
+  -- pvrsrvkm.ko
 
 
 Visit the official thread at XDA: http://forum.xda-developers.com/showthread.php?t=2735894
