@@ -1,0 +1,50 @@
+==================================================================
+= EXPERIMENTAL: 3.4.67 kernel source code for Newman N1 (MT6577) =
+==================================================================
+
+*********************************************************************************
+* NOTE: This kernel is for JB 4.1.1 and 4.2.2 but for now the phone won't boot. *
+* It gets stuck after boot logo with following errors in logcat:                *
+*                                                                               *
+* E/IMGSRV  (  104): :0: OpenServices: PVRSRVBridgeCall failed.                 *
+* E/IMGSRV  (  104): :0: PVRSRVConnect: Unable to open connection.              *
+* E/IMGSRV  (  104): :0: PVRSRVBridgeCall: Failed to access device.             *
+*                        Function ID:3223086860 (Bad address).                  *
+*********************************************************************************
+
+In order to get kernel compilation working, make sure you follow one of these steps:
+
+- You have 3 folders: kernel, mediatek and toolchain.
+  - kernel folder is the basic one, with the linux kernel sources.
+  - mediatek folder contains dependences that are necessary to build for MTK platform.
+  - toolchain folder contains the appropriate cross-compiler.
+
+
+- In Terminal, cd to kernel folder.
+  There is a script called build.sh.
+  That is the interface you will use to build device kernel.
+
+- To begin with the build process run script with command:
+  ./build.sh newmann1 (normal compilation)
+  or
+  ./build.sh newmann1 verbose (verbose compilation)
+
+  Once finished, you will find:
+  -- the new kernel file in root folder ./build_result/kernel/kernel
+  -- the compiled modules in root folder ./build_result/modules/*.ko
+
+
+- To perform a clean build run command:
+  ./build.sh newmann1 clean
+  or even better
+  ./build.sh newmann1 mrproper
+
+
+- Create new boot.img:
+  -- Get stock boot.img for device and unpack it.
+  -- Repack the stock ramdisk (from stock boot.img) with the new generated kernel file.
+
+
+Visit the official thread at XDA: http://forum.xda-developers.com/showthread.php?t=2735894
+
+Enjoy!
